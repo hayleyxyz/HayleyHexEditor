@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Globalization;
 using System.Text;
 
@@ -22,6 +23,8 @@ namespace HayleyHexEditor.Controls
                     {
                         ((EventHandler) streamChangedEvent)?.Invoke(this, EventArgs.Empty);
                     }
+
+                    scrollBar.Maximum = (int) stream.Length / ScrollIncrement;
 
                     this.Invalidate();
                 }
@@ -59,22 +62,66 @@ namespace HayleyHexEditor.Controls
         private byte[] internalBuffer;
 
         /// <summary>
-        /// The size of a character in the current font.
+        /// Number of characters to use for the address column.
         /// </summary>
-        private SizeF charSize;
+        private int addressWidth = 8;
 
-        private SizeF charPadding = new SizeF(2, 2);
+        private int ScrollIncrement => columnCount;
+
+        private SizeF CharacterDrawSize
+        {
+            get
+            {
+                using (var graphics = CreateGraphics())
+                {
+                    return graphics.MeasureString("W", this.Font);
+                }
+            }
+        }
+
+        private SizeF SpaceDrawSize
+        {
+            get
+            {
+                using (var graphics = CreateGraphics())
+                {
+                    return graphics.MeasureString(" ", this.Font);
+                }
+            }
+        }
+
+        private SizeF HexRowDrawSize
+        {
+            get
+            {
+                return ((this.CharacterDrawSize * columnCount) * 2) + this.SpaceDrawSize * columnCount;
+            }
+        }
+
+        private SizeF AddressDrawSize
+        {
+            get
+            {
+                using (var graphics = CreateGraphics())
+                {
+                    return graphics.MeasureString("0".PadLeft(addressWidth), this.Font);
+                }
+            }
+        }
 
         public HexControl()
         {
             InitializeComponent();
+
+            this.Padding = Padding.Empty;
+            this.Margin = Padding.Empty;
 
             scrollBar = new VScrollBar();
             //VScrollBar.ValueChanged += new EventHandler(this.ScrollChanged);
             scrollBar.TabStop = true;
             scrollBar.TabIndex = 0;
             scrollBar.Dock = DockStyle.Right;
-            scrollBar.Visible = true;
+            scrollBar.Visible = false;
 
             edit = new TextBox();
             edit.AutoSize = false;
@@ -89,44 +136,18 @@ namespace HayleyHexEditor.Controls
             edit.WordWrap = false;
             edit.Visible = false;
 
-            this.ColumnCount = 3;
-            this.RowCount = 1;
-            this.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
-            this.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
-            this.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
+            Controls.Add(scrollBar, 0, 0);
+            Controls.Add(edit, 0, 0);
 
+            scrollBar.ValueChanged += (sender, e) =>
+            {
+                if (stream != null)
+                {
+                    stream.Seek(scrollBar.Value * ScrollIncrement, SeekOrigin.Begin);
+                }
 
-            var addressView = new CharacterView();
-            addressView.Dock = DockStyle.Left;
-            addressView.Text = "Address";
-            addressView.Font = FontManager.Instance.GetFont("Source Code Pro", 10);
-            
-            this.Controls.Add(addressView, 0, 0);
-
-            var hexView = new CharacterView();
-            hexView.Dock = DockStyle.Left;
-            hexView.Text = "Hex";
-            hexView.Font = FontManager.Instance.GetFont("Source Code Pro", 10);
-
-            this.Controls.Add(hexView, 0, 0);
-
-            var characterView = new CharacterView();
-            characterView.Dock = DockStyle.Left;
-            characterView.Text = "Character";
-            characterView.Font = FontManager.Instance.GetFont("Source Code Pro", 10);
-
-            this.Controls.Add(characterView, 0, 0);
-
-            //Controls.Add(scrollBar, 0, 0);
-            //Controls.Add(edit, 0, 0);
-
-
-
-
-            //this.Font = FontManager.Instance.GetFont("Source Code Pro", 10);
-
-            //this.LocationChanged
-
+                this.Invalidate();
+            };
         }
 
         private void FillBuffer()
@@ -167,22 +188,58 @@ namespace HayleyHexEditor.Controls
                 return;
             }
 
+            // TODO: This should be done in a separate method
+            scrollBar.Maximum = (int) stream.Length / ScrollIncrement;
+
             scrollBar.Show();
-            return;
+
+
+            // TODO: This should be done in a separate method
+            FillBuffer();
+
+            DrawAddress(e.Graphics);
             DrawHex(e.Graphics);
-            
+            DrawCharacters(e.Graphics);
+        }
+
+        private void DrawCharacters(Graphics graphics)
+        {
+            for (var row = 0; row < rowCount; row++)
+            {
+                var stringToDraw = new StringBuilder(columnCount);
+
+                for (int col = 0; col < columnCount; col++)
+                {
+                    var b = internalBuffer[(row * columnCount) + col];
+                    stringToDraw.Append(b < 32 ? '.' : (char) b);
+                }
+
+                graphics.DrawString(
+                    s: stringToDraw.ToString(),
+                    font: this.Font,
+                    brush: new SolidBrush(ForeColor),
+                    x: AddressDrawSize.Width + HexRowDrawSize.Width,
+                    y: 0 + row * AddressDrawSize.Height,
+                    format: StringFormat.GenericDefault
+                );
+            }
+        }
+
+        private void DrawAddress(Graphics graphics)
+        {
+            for (var row = 0; row < rowCount; row++)
+            {
+                var address = (stream.Position + row * columnCount).ToString("X" + this.addressWidth, CultureInfo.InvariantCulture);
+                graphics.DrawString(address, this.Font, new SolidBrush(ForeColor), x: 0, y: AddressDrawSize.Height * row);
+            }
         }
 
         private void DrawHex(Graphics graphics)
         {
-            this.charSize = graphics.MeasureString("0", this.Font);
-
             for (var row = 0; row < rowCount; row++)
             {
                 Color backColor = SystemColors.ControlLightLight;
                 Brush foreground = new SolidBrush(ForeColor);
-
-                FillBuffer();
 
                 var stringToDraw = new StringBuilder(numBytesInDisplay * 3 + 1);
 
@@ -192,10 +249,9 @@ namespace HayleyHexEditor.Controls
                     stringToDraw.Append(' ');
                 }
 
-
                 try
                 {
-                    graphics.DrawString(stringToDraw.ToString(), this.Font, foreground, x: 0, y: 0 + row * charSize.Height);
+                    graphics.DrawString(stringToDraw.ToString(), this.Font, foreground, x: AddressDrawSize.Width, y: 0 + row * AddressDrawSize.Height, StringFormat.GenericDefault);
                 }
 
                 finally
@@ -206,6 +262,9 @@ namespace HayleyHexEditor.Controls
                     }
                 }
             }
+
+            // DEBUG
+            graphics.DrawRectangle(Pens.Black, 0, 0, AddressDrawSize.Width, AddressDrawSize.Height);
         }
     }
 }
