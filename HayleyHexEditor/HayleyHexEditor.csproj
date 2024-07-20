@@ -1,0 +1,459 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>False</GenerateDocumentationFile>
+    <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>C:\Users\hayley\Projects\HayleyHexEditor\keypair.snk</AssemblyOriginatorKeyFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <EnforceCodeStyleInBuild>False</EnforceCodeStyleInBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Update="Fonts/IBM_Plex_Mono/IBMPlexMono-Bold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/IBM_Plex_Mono/IBMPlexMono-BoldItalic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/IBM_Plex_Mono/IBMPlexMono-ExtraLight.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/IBM_Plex_Mono/IBMPlexMono-ExtraLightItalic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/IBM_Plex_Mono/IBMPlexMono-Italic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/IBM_Plex_Mono/IBMPlexMono-Light.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/IBM_Plex_Mono/IBMPlexMono-LightItalic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/IBM_Plex_Mono/IBMPlexMono-Medium.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/IBM_Plex_Mono/IBMPlexMono-MediumItalic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/IBM_Plex_Mono/IBMPlexMono-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/IBM_Plex_Mono/IBMPlexMono-SemiBold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/IBM_Plex_Mono/IBMPlexMono-SemiBoldItalic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/IBM_Plex_Mono/IBMPlexMono-Thin.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/IBM_Plex_Mono/IBMPlexMono-ThinItalic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/Inconsolata-VariableFont_wdth,wght.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata-Black.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata-Bold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata-ExtraBold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata-ExtraLight.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata-Light.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata-Medium.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata-SemiBold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_Condensed-Black.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_Condensed-Bold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_Condensed-ExtraBold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_Condensed-ExtraLight.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_Condensed-Light.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_Condensed-Medium.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_Condensed-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_Condensed-SemiBold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_Expanded-Black.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_Expanded-Bold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_Expanded-ExtraBold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_Expanded-ExtraLight.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_Expanded-Light.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_Expanded-Medium.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_Expanded-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_Expanded-SemiBold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_ExtraCondensed-Black.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_ExtraCondensed-Bold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_ExtraCondensed-ExtraBold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_ExtraCondensed-ExtraLight.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_ExtraCondensed-Light.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_ExtraCondensed-Medium.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_ExtraCondensed-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_ExtraCondensed-SemiBold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_ExtraExpanded-Black.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_ExtraExpanded-Bold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_ExtraExpanded-ExtraBold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_ExtraExpanded-ExtraLight.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_ExtraExpanded-Light.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_ExtraExpanded-Medium.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_ExtraExpanded-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_ExtraExpanded-SemiBold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_SemiCondensed-Black.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_SemiCondensed-Bold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_SemiCondensed-ExtraBold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_SemiCondensed-ExtraLight.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_SemiCondensed-Light.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_SemiCondensed-Medium.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_SemiCondensed-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_SemiCondensed-SemiBold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_SemiExpanded-Black.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_SemiExpanded-Bold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_SemiExpanded-ExtraBold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_SemiExpanded-ExtraLight.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_SemiExpanded-Light.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_SemiExpanded-Medium.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_SemiExpanded-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_SemiExpanded-SemiBold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_UltraCondensed-Black.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_UltraCondensed-Bold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_UltraCondensed-ExtraBold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_UltraCondensed-ExtraLight.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_UltraCondensed-Light.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_UltraCondensed-Medium.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_UltraCondensed-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_UltraCondensed-SemiBold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_UltraExpanded-Black.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_UltraExpanded-Bold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_UltraExpanded-ExtraBold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_UltraExpanded-ExtraLight.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_UltraExpanded-Light.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_UltraExpanded-Medium.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_UltraExpanded-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Inconsolata/static/Inconsolata_UltraExpanded-SemiBold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/JetBrains_Mono/JetBrainsMono-Italic-VariableFont_wght.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/JetBrains_Mono/JetBrainsMono-VariableFont_wght.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/JetBrains_Mono/static/JetBrainsMono-Bold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/JetBrains_Mono/static/JetBrainsMono-BoldItalic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/JetBrains_Mono/static/JetBrainsMono-ExtraBold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/JetBrains_Mono/static/JetBrainsMono-ExtraBoldItalic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/JetBrains_Mono/static/JetBrainsMono-ExtraLight.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/JetBrains_Mono/static/JetBrainsMono-ExtraLightItalic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/JetBrains_Mono/static/JetBrainsMono-Italic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/JetBrains_Mono/static/JetBrainsMono-Light.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/JetBrains_Mono/static/JetBrainsMono-LightItalic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/JetBrains_Mono/static/JetBrainsMono-Medium.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/JetBrains_Mono/static/JetBrainsMono-MediumItalic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/JetBrains_Mono/static/JetBrainsMono-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/JetBrains_Mono/static/JetBrainsMono-SemiBold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/JetBrains_Mono/static/JetBrainsMono-SemiBoldItalic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/JetBrains_Mono/static/JetBrainsMono-Thin.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/JetBrains_Mono/static/JetBrainsMono-ThinItalic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Nanum_Gothic_Coding/NanumGothicCoding-Bold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Nanum_Gothic_Coding/NanumGothicCoding-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Roboto_Mono/RobotoMono-Italic-VariableFont_wght.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Roboto_Mono/RobotoMono-VariableFont_wght.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Roboto_Mono/static/RobotoMono-Bold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Roboto_Mono/static/RobotoMono-BoldItalic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Roboto_Mono/static/RobotoMono-ExtraLight.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Roboto_Mono/static/RobotoMono-ExtraLightItalic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Roboto_Mono/static/RobotoMono-Italic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Roboto_Mono/static/RobotoMono-Light.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Roboto_Mono/static/RobotoMono-LightItalic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Roboto_Mono/static/RobotoMono-Medium.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Roboto_Mono/static/RobotoMono-MediumItalic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Roboto_Mono/static/RobotoMono-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Roboto_Mono/static/RobotoMono-SemiBold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Roboto_Mono/static/RobotoMono-SemiBoldItalic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Roboto_Mono/static/RobotoMono-Thin.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Roboto_Mono/static/RobotoMono-ThinItalic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Source_Code_Pro/SourceCodePro-Italic-VariableFont_wght.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Source_Code_Pro/SourceCodePro-VariableFont_wght.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Source_Code_Pro/static/SourceCodePro-Black.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Source_Code_Pro/static/SourceCodePro-BlackItalic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Source_Code_Pro/static/SourceCodePro-Bold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Source_Code_Pro/static/SourceCodePro-BoldItalic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Source_Code_Pro/static/SourceCodePro-ExtraBold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Source_Code_Pro/static/SourceCodePro-ExtraBoldItalic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Source_Code_Pro/static/SourceCodePro-ExtraLight.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Source_Code_Pro/static/SourceCodePro-ExtraLightItalic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Source_Code_Pro/static/SourceCodePro-Italic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Source_Code_Pro/static/SourceCodePro-Light.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Source_Code_Pro/static/SourceCodePro-LightItalic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Source_Code_Pro/static/SourceCodePro-Medium.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Source_Code_Pro/static/SourceCodePro-MediumItalic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Source_Code_Pro/static/SourceCodePro-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Source_Code_Pro/static/SourceCodePro-SemiBold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Source_Code_Pro/static/SourceCodePro-SemiBoldItalic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Ubuntu_Mono/UbuntuMono-Bold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Ubuntu_Mono/UbuntuMono-BoldItalic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Ubuntu_Mono/UbuntuMono-Italic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Fonts/Ubuntu_Mono/UbuntuMono-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
