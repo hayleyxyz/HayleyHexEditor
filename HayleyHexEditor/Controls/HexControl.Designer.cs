@@ -34,6 +34,7 @@
             // 
             Name = "HexControl";
             ResumeLayout(false);
+            this.BackColor = System.Drawing.Color.White;
         }
 
         #endregion

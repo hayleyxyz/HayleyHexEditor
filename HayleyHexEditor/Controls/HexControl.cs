@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.Text;
@@ -66,45 +67,47 @@ namespace HayleyHexEditor.Controls
         /// </summary>
         private int addressWidth = 8;
 
-        private int ScrollIncrement => columnCount;
-
-        private SizeF CharacterDrawSize
+        /// <summary>
+        /// How much to scroll the stream by when the scroll bar is moved.
+        /// </summary>
+        private int ScrollIncrement
         {
             get
             {
-                using (var graphics = CreateGraphics())
-                {
-                    return graphics.MeasureString("W", this.Font);
-                }
+                return Math.Min(columnCount, 1024);
             }
         }
 
-        private SizeF SpaceDrawSize
-        {
-            get
-            {
-                using (var graphics = CreateGraphics())
-                {
-                    return graphics.MeasureString(" ", this.Font);
-                }
-            }
-        }
-
+        /// <summary>
+        /// The size of a row of hex characters.
+        /// </summary>
         private SizeF HexRowDrawSize
         {
             get
             {
-                return ((this.CharacterDrawSize * columnCount) * 2) + this.SpaceDrawSize * columnCount;
+                var rowString = new StringBuilder(columnCount * 2 + columnCount);
+                for (int i = 0; i < columnCount; i++)
+                {
+                    rowString.Append("00 ");
+                }
+
+                using (var graphics = CreateGraphics())
+                {
+                    return graphics.MeasureString(rowString.ToString(), this.Font);
+                }
             }
         }
 
+        /// <summary>
+        /// The size of the address column.
+        /// </summary>
         private SizeF AddressDrawSize
         {
             get
             {
                 using (var graphics = CreateGraphics())
                 {
-                    return graphics.MeasureString("0".PadLeft(addressWidth), this.Font);
+                    return graphics.MeasureString("0".PadLeft(addressWidth, '0'), this.Font);
                 }
             }
         }
@@ -148,6 +151,16 @@ namespace HayleyHexEditor.Controls
 
                 this.Invalidate();
             };
+
+
+            this.Scroll += (sender, e) =>
+            {
+                scrollBar.Value = this.VerticalScroll.Value;
+            };
+
+            this.VerticalScroll.Enabled = true;
+
+            this.VerticalScroll.Visible = true;
         }
 
         private void FillBuffer()
@@ -189,8 +202,11 @@ namespace HayleyHexEditor.Controls
             }
 
             // TODO: This should be done in a separate method
-            scrollBar.Maximum = (int) stream.Length / ScrollIncrement;
+            rowCount = this.Height / (int) HexRowDrawSize.Height;
 
+            // TODO: This should be done in a separate method
+            scrollBar.Maximum = (int) stream.Length / ScrollIncrement;
+            this.VerticalScroll.Maximum = scrollBar.Maximum;
             scrollBar.Show();
 
 
